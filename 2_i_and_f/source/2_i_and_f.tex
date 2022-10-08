@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lfoot{\texttt{github.com/LaurenceA/COMS30017_2022/}}
+\lfoot{\texttt{github.com/LaurenceA/COMS30017\_2022/}}
 \lhead{CN - 2 I\&F - Conor}
 \rhead{\thepage}
 \cfoot{}
@@ -11,6 +11,16 @@
 \subsection*{The leaky integrate and fire model}
 This note is about the dynamics of a single neuron, it will cover
 one of the simplest such models: the leaky integrate and fire model.
+
+
+\begin{figure}[bh]
+\begin{center}
+  \includegraphics[width=6cm]{ion_pump_1.png}\\
+  \includegraphics[width=6cm]{ion_pump_2.png}
+\end{center}
+\caption{The ion pump pumps three sodium ions out for each it two potassiums it pumps in.\label{fig:ion}}
+\end{figure}
+
 
 \subsection*{Electrical properties of a neuron}
 The potential inside a neuron is lower than the potential on the
@@ -20,7 +30,7 @@ the inside and outside of the cell. One typical ion pump is
 Na+/K+-ATPase (Sodium-potassium adenosine triphosphatase); this uses
 energy in the form of ATP, the energy carrying molecule in the body,
 and through each cycle it moves three sodium ions out of the cell and
-two potassium ions into the cell. Since both sodium and potassium ions
+two potassium ions into the cell, see Fig.~\ref{fig:ion} for a cartoon. Since both sodium and potassium ions
 have a charge of plus one, this leads to a net loss of one atomic
 charge to the inside of the cell lowering its potential. It also
 creates an excess of sodium outside the cell and an excess of
@@ -34,7 +44,7 @@ which are surrounded by salty water, as in Fig.~\ref{in_out}.
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=6cm]{in_out}
+\includegraphics[width=6cm]{uk.png}
 \end{center}
 \caption{A cartoon to help you remember that there is more sodium outside the cell and more potassium inside.\label{in_out}}
 \end{figure}
@@ -68,6 +78,23 @@ charge that can be stored at the membrane is $C_mV$. The amount of
 electrical charge is the analogue of the volume of water. Thus,
 voltage is like height, charge is like the amount of water.
 
+
+\begin{figure}[tbph]
+\begin{center}
+  \includegraphics[width=5cm]{children1.png}
+  \includegraphics[width=5cm]{children2.png}\\
+  \includegraphics[width=5cm]{children3.png}
+  \includegraphics[width=5cm]{children4.png}
+\end{center}
+\caption{In the first panel the children are in the circle, however
+  random movement quickly disperses them across the playground, in the second panel;
+  however, in the final two panels the force exerted on the children by the musical dog
+  counteracts the diffusion pressure; in the neuron, the ions are
+  children and the role of snoppy is played by
+  voltage.\label{fig:children}}
+\end{figure}
+
+
 The leak is a bit more complicated, because of the chemical gradients,
 that is the effects of the differing levels of ions inside and outside
 the cell along and their propensity to diffuse, the voltage at which
@@ -83,7 +110,7 @@ what happens, there is a high concentration of potassium inside the
 cell and because of the random motion of particles associated with
 temperature, these have a tendency to diffuse, that is to increase the
 entropy of the situation by spreading out. It takes a force to
-counteract this. This is the reversal potential, $E_L$, the voltage
+counteract this; see Fig.~ref{fig:children} for a whimsical illustration of this. This is the reversal potential, $E_L$, the voltage
 required for zero current even if there is some conductivity. It turns
 out that the normal Ohm's law applies around the reversal potential so
 that the current out of the cell is proportional to $V-E_L$.
