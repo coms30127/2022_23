@@ -211,6 +211,97 @@ current. It is plotted in Fig.~\ref{f_i_curve}.
   the firing increases very quickly. \label{f_i_curve}}
 \end{figure}
 
+\subsection*{Beyond the integrate and fire equations}
+
+The leaky integrate and fire model is very useful; from a practical
+point-of-view it can be used in modelling, either for modelling large
+networks of spiking neurons for neuroscience, for example, when
+examinging the statistics of spiking or synapse strengths under
+various regimes, or when investigating spiking neural networks in
+machine learning. It also clarifies the role of the membrane time
+constant, measuring this is a useful and important step in the
+experimental exploration of a neuron's properties. From a theoretical
+point-of-view; it gives important insight into what a neuron does.
+
+The model has limitations; it does not incorporate the dynamics of the
+active ion channels. Ultimately, this means it does not model the
+production of the spike; in the integrate and fire model the spike is
+included using the threshold condition, when the voltage exceeds the
+threshold a spike is said to occur, but there is no indication of how
+that happens. The \textbf{Hodgkin-Huxley equation} includes some
+active channels and will demonstate the dynamics that can produce a
+spike. However, it is possible to consider other, smaller,
+modifications of the leaky integrate and fire model.
+
+One issue with the leaky integrate and fire model is that it does not
+model behaviour near the threshold, even before the neuron starts to
+spike, when its voltage approaches the threshold where a spike becomes
+inevitable, some of the active channels do start to open altering the
+dynamics. Since this only applies very close to threshold it might not
+seem a significant drawback of the model; however, in some
+descriptions of neuronal networks some homeostatic principles of
+balanced excitation and inhibition mean that neurons are often near
+threshold making the dynamics near threshold important. There are
+extensions to the leaking integrate and fire model that seek to
+address this, usually by adding extra non-linear terms to the
+differential equation; one successful example is the adaptive
+exponential leaking integrate and fire model which adds an exponential
+term.
+
+Another more straight-forward difference between the
+integrate-and-fire neuron and real neurons is refractoriness; most
+neurons are unable to fire directly after a spike, there is a rich
+discription of this \textbf{refactory period}, many neurons have a
+short period where they are unable to spike and another, longer,
+period where spike is less likely to occur. The refractory period is
+often taken to be around 10 ms, but this does vary a lot between
+neurons, Purkinje cells for example seem to have little or no
+refractory period. This refactoriness is related to the active
+channels, for example, during spiking potassium channels open, as we
+will see this is part of the dynamics which produces the down-swing of
+the spike and, while they are open, these potassium channels will push
+the voltage towards the potassium reversal potential. This affect can
+easily be added to the integrate-and-fire model, for example, by
+adding to the spiking rule to stipulate that the voltage remains fixed
+that the reset value for some specified time after a spike.
+
+One final example is \textbf{spike rate adaptation}, in the
+integrate-and-fire model a neuron with a constant input will spike at
+a constant rate: in fact, the model resets completely with every spike
+so the neuron never shows any effect of its previous behaviour. Real
+neurons often show more complex behaviour, often, for example, a
+neuron will spike slower as it continues to spike, or its second spike
+will happen very easily, something called pair-pulse excitation but
+will then slow down. There are even neurons, such as the mossy cells
+of the hilar region of dentate gyrus, which spike faster and faster
+the longer they are excited. This can be easily incorporated into the
+integrate-and-fire neuron using an extra current:
+\begin{equation}
+\tau_m\frac{dV}{dt}=E_L-V+R_mI_e-W
+\end{equation}  
+where $W$ is itself a current which decays to zero:
+\begin{equation}
+\tau_w\frac{dW}{dt}=-W
+\end{equation}  
+and has its own rule for what happens when there is a spike:
+\begin{equation}
+  W\rightarrow \delta W
+\end{equation}
+Thus, if $\delta W$ is positive, $W$ will increase if there is a
+spike, this gives a negative contribution to $dV/dt$, slowing down
+spiking. $W$ then decays to zero with a timescale $\tau_w$. These
+dynamics would model spike rate adaptation and the $W$ current itself
+can be thought of as the effect of a slow potassium current. In fact,
+spike rate adaptation is not explained by the Hodgkin-Huxley, but a
+slow potassium current could be added there as well.
+
+
+
+
+
+
+
+
 
 \begin{thebibliography}{99}
 \bibitem{Lapicque1907a}
